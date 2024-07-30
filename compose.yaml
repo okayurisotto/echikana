@@ -1,0 +1,6 @@
+services:
+  optimum:
+    build: .
+    command: export onnx --model Falconsai/nsfw_image_detection /output
+    volumes:
+      - ./model:/output
