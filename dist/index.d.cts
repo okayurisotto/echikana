@@ -1,6 +1,10 @@
 declare class InitializationError extends Error {
     constructor();
 }
+declare class SharpError extends Error {
+    readonly error: Error;
+    constructor(error: Error);
+}
 declare class InternalError extends Error {
     constructor();
 }
@@ -49,6 +53,7 @@ declare class EchikanaInferencer {
 
 declare const errors: {
     InitializationError: typeof InitializationError;
+    SharpError: typeof SharpError;
     InternalError: typeof InternalError;
 };
 

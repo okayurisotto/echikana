@@ -8,6 +8,12 @@ export class InitializationError extends Error {
   }
 }
 
+export class SharpError extends Error {
+  public constructor(public readonly error: Error) {
+    super("Image format conversion by sharp failed.");
+  }
+}
+
 export class InternalError extends Error {
   public constructor() {
     super("An internal error has occurred.");
@@ -74,14 +80,22 @@ export class EchikanaInferencer {
       throw new InitializationError();
     }
 
-    const pixels = await sharp(image)
-      .resize(this.size, this.size, {
-        kernel: "nearest",
-        fit: "fill", // Resize without regard to aspect ratio
-      })
-      .removeAlpha() // Remove transparency information
-      .raw() // Convert to an unsigned 8-bit integer array
-      .toBuffer();
+    const pixels = await (async () => {
+      try {
+        return await sharp(image)
+          .resize(this.size, this.size, {
+            kernel: "nearest",
+            fit: "fill", // Resize without regard to aspect ratio
+          })
+          .removeAlpha() // Remove transparency information
+          .raw() // Convert to an unsigned 8-bit integer array
+          .toBuffer();
+      } catch (error: unknown) {
+        if (error instanceof Error) return new SharpError(error);
+        return new InternalError();
+      }
+    })();
+    if (pixels instanceof Error) throw pixels;
 
     const redComponents: number[] = [];
     const greenComponents: number[] = [];
