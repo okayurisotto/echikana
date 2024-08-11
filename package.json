@@ -1,6 +1,6 @@
 {
   "name": "@okayurisotto/echikana",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Node.js library for NSFW classification of images.",
   "keywords": [
     "NSFW"
