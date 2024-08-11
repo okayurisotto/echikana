@@ -1,6 +1,6 @@
 {
   "name": "@okayurisotto/echikana",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Node.js library for NSFW classification of images.",
   "keywords": [
     "NSFW"
@@ -14,6 +14,9 @@
   },
   "bugs": {
     "url": "https://github.com/okayurisotto/echikana/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "type": "module",
   "files": [
