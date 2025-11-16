@@ -71,7 +71,7 @@ export class EchikanaInferencer {
    * However, it is recommended that `initialize()` method be called manually beforehand, because it takes time to create the session.
    * If the session has already been initialized, this method does not create or recreate the session.
    */
-  public async inference(image: ArrayBufferLike): Promise<number> {
+  public async inference(image: ArrayBuffer): Promise<number> {
     if (!this.initialized) {
       await this.initialize();
     }
