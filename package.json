@@ -29,7 +29,6 @@
   },
   "scripts": {
     "build": "tsup",
-    "lint": "eslint ./src/**/*.ts",
     "typecheck": "tsc"
   },
   "engines": {
