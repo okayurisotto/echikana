@@ -6,5 +6,5 @@
     "@tsconfig/node-lts/tsconfig.json",
     "@tsconfig/strictest/tsconfig.json"
   ],
-  "include": ["src", "tsup.config.ts", "eslint.config.mjs"]
+  "include": ["src", "tsup.config.ts"]
 }
